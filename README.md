@@ -45,8 +45,4 @@ node index.js
 - /hacker_bot-catfact - Get a random cat fact.
 - /hacker_bot-joke- Get a joke.
 - /hacker_bot-help - View available commands
-
-  ---
-  ## Creator:
-   made by: the amateur tech guy!!
   
