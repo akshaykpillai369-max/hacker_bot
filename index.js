@@ -29,7 +29,7 @@ app.command("/hacker_bot-help", async ({ ack, respond }) => {
     text:
 `Available Commands:
 /hacker_bot_ping - Check bot latency
-/hacker_bot-vulnerability - Get a live vulnerability update
+/hacker_bot-vuln - Get a live vulnerability update
 /hacker_bot-catfact - Get a cat fact
 /hacker_bot-joke - Get a joke
 /hacker_bot-passcheck- gives the strength of the password`
@@ -96,7 +96,7 @@ app.command("/hacker_bot-vuln", async ({ ack, respond }) => {
 
 app.command("/hacker_bot-passcheck", async({command, ack, respond})=> {
 
-  await ack
+  await ack()
 
   const pass = command.text.trim()
 
