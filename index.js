@@ -64,20 +64,31 @@ ${response.data.punchline}`
 });
 
 app.command("/hacker_bot-fact", async ({ ack, respond }) => {
-  await ack();
+  await ack()
 
   try {
-    const res = await axios.get("https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=10");
-    const list = res.data.vulnerabilities;
-    const item = list[Math.floor(Math.random() * list.length)].cve;
 
-    const id = item.id;
-    const desc = item.descriptions.find(d => d.lang === "en")?.value || "No description.";
+
+    const res = await axios.get("https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=10")
+
+    const list = res.data.vulnerabilities
+
+    const item = list[Math.floor(Math.random() * list.length)].cve
+
+
+    const id = item.id
+
+    const desc = item.descriptions.find(d => d.lang === "en")?.value || "No description"
+
 
     await respond({
-      text: `⚠️ *Security Fact*\n*CVE:* ${id}\n*Summary:* ${desc}`
-    });
+      text: `Security Fact \n CVE: ${id}\n Summary:  ${desc}`
+
+
+    })
+
   } catch (err) {
-    await respond({ text: "Could not fetch vulnerability data right now." });
+
+    await respond({ text: "Could not fetch vulnerability data right now." })
   }
-});
+})
