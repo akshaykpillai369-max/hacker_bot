@@ -31,7 +31,8 @@ app.command("/hacker_bot-help", async ({ ack, respond }) => {
 /hacker_bot_ping - Check bot latency
 /hacker_bot-vulnerability - Get a live vulnerability update
 /hacker_bot-catfact - Get a cat fact
-/hacker_bot-joke - Get a joke`
+/hacker_bot-joke - Get a joke
+/hacker_bot-passcheck- gives the strength of the password`
   });
 });
 
