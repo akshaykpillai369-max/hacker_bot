@@ -48,7 +48,7 @@ app.command("/hacker_bot-catfact", async ({ ack, respond }) => {
 });
 
 
-app.command("/hack_bot-joke", async ({ ack, respond }) => {
+app.command("/hacker_bot-joke", async ({ ack, respond }) => {
   await ack();
 
   try {
