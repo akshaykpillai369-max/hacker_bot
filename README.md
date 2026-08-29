@@ -1,8 +1,8 @@
 # HackerBot 
 
-A Slack bot for aspiring hackers😅
+My dream was to become a hacker(in the future)😅. So I love to make stuff related to hacking; that's why I made a Slack Bot for hackers. It provides you with a password check and gives vulnerabilities fetched from an api
 
-## commands available
+## Commands available
 
 * `/hacker_bot_ping` - Check the bot is live
 * `/hacker_bot-vuln` - Get vulnerabilities
