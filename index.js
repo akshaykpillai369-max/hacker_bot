@@ -64,28 +64,20 @@ ${response.data.punchline}`
 });
 
 app.command("/hacker_bot-fact", async ({ ack, respond }) => {
-  await ack()
+  await ack();
 
   try {
-    const res = await axios.get("https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json", {
-      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }
-    })
+    const res = await axios.get("https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=10");
+    const list = res.data.vulnerabilities;
+    const item = list[Math.floor(Math.random() * list.length)].cve;
 
-    const list = res.data.vulnerabilities
-
-    const item = list[Math.floor(Math.random() * list.length)]
-
+    const id = item.id;
+    const desc = item.descriptions.find(d => d.lang === "en")?.value || "No description.";
 
     await respond({
-
-
-      text: `Security Fact\n CVE: ${item.cveID} \n Name: ${item.vulnerabilityName} \n Summary: ${item.shortDescription}`
-
-
-    })
-
-  } catch (e) {
-
+      text: `⚠️ *Security Fact*\n*CVE:* ${id}\n*Summary:* ${desc}`
+    });
+  } catch (err) {
     await respond({ text: "Could not fetch vulnerability data right now." });
   }
-})
+});
