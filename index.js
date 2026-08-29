@@ -23,13 +23,15 @@ app.command("/hacker_bot_ping", async ({ command, ack, respond }) => {
   console.log("bot is running!");
 })();
 
-app.command("/hack_bot-help", async ({ ack, respond }) => {
+app.command("/hacker_bot-help", async ({ ack, respond }) => {
   await ack();
   await respond({
     text:
 `Available Commands:
-/bot_name-ping - Check bot latency
-/bot_name-catfact - Get a cat fact`
+/hacker_bot_ping - Check bot latency
+/hacker_bot-fact - Get a live hacking/vulnerability update
+/hacker_bot-catfact - Get a cat fact
+/hacker_bot-joke - Get a joke`
   });
 });
 
