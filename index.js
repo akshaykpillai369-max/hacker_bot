@@ -67,8 +67,9 @@ app.command("/hacker_bot-fact", async ({ ack, respond }) => {
   await ack()
 
   try {
-
-    const res = await axios.get("https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json")
+    const res = await axios.get("https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json", {
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }
+    })
 
     const list = res.data.vulnerabilities
 
