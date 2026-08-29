@@ -29,7 +29,7 @@ app.command("/hacker_bot-help", async ({ ack, respond }) => {
     text:
 `Available Commands:
 /hacker_bot_ping - Check bot latency
-/hacker_bot-fact - Get a live hacking/vulnerability update
+/hacker_bot-fact - Get a live vulnerability update
 /hacker_bot-catfact - Get a cat fact
 /hacker_bot-joke - Get a joke`
   });
@@ -62,3 +62,29 @@ ${response.data.punchline}`
     await respond({ text: "Failed to fetch a joke." });
   }
 });
+
+app.command("/hacker_bot-fact", async ({ ack, respond }) => {
+  await ack()
+
+  try {
+
+    const res = await axios.get("https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json")
+
+    const list = res.data.vulnerabilities
+
+    const item = list[Math.floor(Math.random() * list.length)]
+
+
+    await respond({
+
+
+      text: `Security Fact\n CVE: ${item.cveID} \n Name: ${item.vulnerabilityName} \n Summary: ${item.shortDescription}`
+
+
+    })
+
+  } catch (e) {
+
+    await respond({ text: "Could not fetch vulnerability data right now." });
+  }
+})
